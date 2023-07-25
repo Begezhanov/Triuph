@@ -1,26 +1,20 @@
 'use client'
 
 import { throttle } from '@/lib/throttle'
-import { useState, useRef, useEffect, useCallback } from 'react'
-import { ChatLine, LoadingChatLine } from './chat-line'
-import { PaperAirplaneIcon } from '@heroicons/react/24/outline'
-import cx from 'classnames'
-import { AcademicCapIcon } from '@heroicons/react/24/outline'
+import { AcademicCapIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline'
 import axios from 'axios'
+import cx from 'classnames'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
+import { ChatLine, LoadingChatLine } from './chat-line'
 
 // default first message to display in UI (not necessary to define the prompt)
-export const initialMessages = [
-  {
-    role: 'assistant',
-    content: 'Hi! I am a Jeopardy expert. Fire away with trivia questions!',
-  },
-]
 
 const InputMessage = ({ input, setInput, sendMessage, loading }) => {
   const [isGeneratingQuestion, setIsGeneratingQuestion] = useState(false)
   const [question, setQuestion] = useState(null)
   const [questionError, setQuestionError] = useState(null)
+  const [character, serCharacter] = useState("David Goggins") // write char name from select component
   const inputRef = useRef(null)
 
   const shouldShowLoadingIcon = loading || isGeneratingQuestion
@@ -60,8 +54,10 @@ const InputMessage = ({ input, setInput, sendMessage, loading }) => {
     }
   }, [questionError])
 
+
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-b from-transparent via-white to-white flex flex-col items-center clear-both">
+      {/* select component for choosing character */}
       <button
         className="mx-auto flex w-fit items-center gap-3 rounded border border-neutral-200 bg-white py-2 px-4 text-black text-sm hover:opacity-50 disabled:opacity-25"
         onClick={generateJeopardyQuestion}
@@ -74,7 +70,7 @@ const InputMessage = ({ input, setInput, sendMessage, loading }) => {
       <div className="mx-2 my-4 flex-1 w-full md:mx-4 md:mb-[52px] lg:max-w-2xl xl:max-w-3xl">
         <div className="relative mx-2 flex-1 flex-col rounded-md border-black/10 bg-white shadow-[0_0_10px_rgba(0,0,0,0.10)] sm:mx-4">
           <input
-            ref={inputRef}
+            ref={inputRef} Fire away with trivia questions
             aria-label="chat input"
             required
             className="m-0 w-full border-0 bg-transparent p-0 py-3 pl-4 pr-12 text-black"
@@ -116,7 +112,13 @@ const InputMessage = ({ input, setInput, sendMessage, loading }) => {
   )
 }
 
-const useMessages = () => {
+const useMessages = (character) => {
+  const initialMessages = [
+    {
+      role: 'assistant',
+      content: `What’s up! I am ${character}`,
+    },
+  ]
   const [messages, setMessages] = useState(initialMessages)
   const [isMessageStreaming, setIsMessageStreaming] = useState(false);
   const [loading, setLoading] = useState(false)
@@ -140,6 +142,7 @@ const useMessages = () => {
       },
       body: JSON.stringify({
         messages: last10messages,
+        character: character
       }),
     })
 
@@ -195,12 +198,14 @@ const useMessages = () => {
   }
 }
 
-export default function Chat() {
+
+
+export default function Chat({ character }) {
   const [input, setInput] = useState('')
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true);
   const messagesEndRef = useRef(null);
   const chatContainerRef = useRef(null);
-  const { messages, isMessageStreaming, loading, error, sendMessage } = useMessages()
+  const { messages, isMessageStreaming, loading, error, sendMessage } = useMessages(character)
 
   const handleScroll = () => {
     if (chatContainerRef.current) {
@@ -215,6 +220,7 @@ export default function Chat() {
       }
     }
   };
+
 
   const scrollDown = useCallback(() => {
     if (autoScrollEnabled) {
@@ -233,13 +239,16 @@ export default function Chat() {
     }
   }, [error])
 
+
   return (
-    <div className="flex-1 w-full border-zinc-100 bg-white overflow-hidden">
+    <div className="flex-1 w-full border-zinc-100 bg-white overflow-hidden flex flex-col">
+      
       <div
         ref={chatContainerRef}
-        className="flex-1 w-full relative max-h-[calc(100vh-4rem)] overflow-x-hidden"
+        className="flex-1 w-full relative max-h-[calc(100vh-4rem)] overflow-x-hidden "
         onScroll={handleScroll}
       >
+        {/* Existing code for rendering chat messages */}
         {messages.map(({ content, role }, index) => (
           <ChatLine key={index} role={role} content={content} isStreaming={index === messages.length - 1 && isMessageStreaming} />
         ))}
@@ -257,7 +266,8 @@ export default function Chat() {
           isLoading={loading || isMessageStreaming}
         />
       </div>
+
       <Toaster />
     </div>
-  )
+  );
 }
