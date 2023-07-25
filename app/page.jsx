@@ -10,8 +10,8 @@ export default async function Home() {
     session !== null ? (
       // <Chat character="David Goggins" />
       <>
-        <Link href="/david" className="p-8 border rounded">Get motivated by Davud Goggins</Link>
-        <Link href="/irina" className="p-8 border rounded">Get motivated by Irina</Link>
+        <Link href="/david" className="p-8 border rounded">Get motivated by David Goggins</Link>
+        <Link href="/irina" className="p-8 border rounded">Get motivated by Irina Khakamada</Link>
       </>
 
     ) : (

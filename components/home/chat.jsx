@@ -116,7 +116,7 @@ const useMessages = (character) => {
   const initialMessages = [
     {
       role: 'assistant',
-      content: `What’s up! I am ${character}`,
+      content: `Hey there! I am ${character}`,
     },
   ]
   const [messages, setMessages] = useState(initialMessages)
