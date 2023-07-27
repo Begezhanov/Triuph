@@ -241,7 +241,7 @@ export default function Chat({ character }) {
 
 
   return (
-    <div className="flex-1 w-full border-zinc-100 bg-white overflow-hidden flex flex-col">
+    <div className="flex-1 w-full border-white-100 bg-white overflow-hidden flex flex-col">
       
       <div
         ref={chatContainerRef}

@@ -41,11 +41,22 @@ export default async function RootLayout({
     <html lang="en">
       <Script id="safari-viewport-fix">{IOS_SAFARI_VIEWPORT_UNIT_CORRECTION}</Script>
       <body className={cx(sfPro.variable, inter.variable)}>
-        <div className="fixed h-screen w-full bg-gradient-to-br from-indigo-50 via-white to-cyan-100" />
+        <div className="fixed h-screen w-full " 
+        style={{ // Add missing opening div tag
+          backgroundImage: "url('/wall3.jpeg')",
+          minHeight: "100vh", // Ensure the background covers the entire viewport height
+        }}
+        />
         <Suspense fallback="...">
           <Nav />
         </Suspense>
-        <main className="flex min-h-screen w-full flex-col items-center justify-center pt-16 relative">
+        <main className="flex min-h-screen w-full flex-col items-center justify-center pt-16 relative bg-center bg-no-repeat "
+        style={{ // Add missing opening div tag
+          backgroundImage: "url('/fon.jpeg')",
+          minHeight: "100vh", // Ensure the background covers the entire viewport height
+        }}
+        >
+
           {children}
         </main>
         <Analytics />
