@@ -1,10 +1,12 @@
-import "./globals.css";
-import Script from 'next/script';
+import Nav from "@/components/layout/nav";
+import { authOptions } from "@/lib/authOptions";
 import { Analytics } from "@vercel/analytics/react";
 import cx from "classnames";
-import { sfPro, inter } from "./fonts";
-import Nav from "@/components/layout/nav";
+import { getServerSession } from "next-auth/next";
+import Script from 'next/script';
 import { Suspense } from "react";
+import { inter, sfPro } from "./fonts";
+import "./globals.css";
 
 export const metadata = {
   title: "My First Project",
@@ -37,24 +39,17 @@ window.addEventListener('resize', setViewportProperty(document.documentElement))
 export default async function RootLayout({
   children,
 }) {
+  const session = await getServerSession(authOptions);
   return (
     <html lang="en">
       <Script id="safari-viewport-fix">{IOS_SAFARI_VIEWPORT_UNIT_CORRECTION}</Script>
-      <body className={cx(sfPro.variable, inter.variable)}>
-        <div className="fixed h-screen w-full " 
-        style={{ // Add missing opening div tag
-          backgroundImage: "url('/wall3.jpeg')",
-          minHeight: "100vh", // Ensure the background covers the entire viewport height
-        }}
+      <body className={cx(sfPro.variable, inter.variable, "bg-neutral-700")}>
+        <div className={`fixed h-screen w-full bg-topography `}
         />
         <Suspense fallback="...">
           <Nav />
         </Suspense>
         <main className="flex min-h-screen w-full flex-col items-center justify-center pt-16 relative bg-center bg-no-repeat "
-        style={{ // Add missing opening div tag
-          backgroundImage: "url('/fon.jpeg')",
-          minHeight: "100vh", // Ensure the background covers the entire viewport height
-        }}
         >
 
           {children}

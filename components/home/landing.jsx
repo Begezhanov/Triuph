@@ -47,7 +47,6 @@ export default function Landing() {
                 strokeLinejoin="round"
               />
             </svg>
-            <p>Deploy to Vercel</p>
           </a>
         </div>
       </div>

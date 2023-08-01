@@ -1,12 +1,17 @@
 'use client'
 
 import { throttle } from '@/lib/throttle'
-import { AcademicCapIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline'
+import { PaperAirplaneIcon } from '@heroicons/react/24/outline'
 import axios from 'axios'
 import cx from 'classnames'
+import Link from 'next/link'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import { ChatLine, LoadingChatLine } from './chat-line'
+
+
+
+
 
 // default first message to display in UI (not necessary to define the prompt)
 
@@ -58,15 +63,7 @@ const InputMessage = ({ input, setInput, sendMessage, loading }) => {
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-b from-transparent via-white to-white flex flex-col items-center clear-both">
       {/* select component for choosing character */}
-      <button
-        className="mx-auto flex w-fit items-center gap-3 rounded border border-neutral-200 bg-white py-2 px-4 text-black text-sm hover:opacity-50 disabled:opacity-25"
-        onClick={generateJeopardyQuestion}
-        disabled={isGeneratingQuestion}
-      >
-        <div className="w-4 h-4">
-          <AcademicCapIcon />
-        </div> {'Generate a Jeopardy question for me'}
-      </button>
+
       <div className="mx-2 my-4 flex-1 w-full md:mx-4 md:mb-[52px] lg:max-w-2xl xl:max-w-3xl">
         <div className="relative mx-2 flex-1 flex-col rounded-md border-black/10 bg-white shadow-[0_0_10px_rgba(0,0,0,0.10)] sm:mx-4">
           <input
@@ -242,12 +239,15 @@ export default function Chat({ character }) {
 
   return (
     <div className="flex-1 w-full border-white-100 bg-white overflow-hidden flex flex-col">
-      
+
       <div
         ref={chatContainerRef}
         className="flex-1 w-full relative max-h-[calc(100vh-4rem)] overflow-x-hidden "
         onScroll={handleScroll}
       >
+        <div className='relative m-auto flex p-4 text-base md:max-w-2xl gap-2 md:gap-6 md:py-6 lg:max-w-2xl lg:px-0 xl:max-w-3xl'>
+          <Link href={"/"} className='rounded border px-8 py-2 flex items-center'><img src="/arrow-back.svg" alt="back" className='w-4 h-4 mr-2' /> Back home</Link>
+        </div>
         {/* Existing code for rendering chat messages */}
         {messages.map(({ content, role }, index) => (
           <ChatLine key={index} role={role} content={content} isStreaming={index === messages.length - 1 && isMessageStreaming} />
