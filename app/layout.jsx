@@ -62,7 +62,7 @@ export default async function RootLayout({
       </div>
     </div>
   </div>
-{/* </div> */}
+
 
         {/* <body className={cx(sfPro.variable, inter.variable, )}>
                 <div className="fixed h-screen w-full bg-gradient-to-br from-white to-stone-900"/>
