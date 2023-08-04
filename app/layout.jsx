@@ -58,7 +58,7 @@ export default async function RootLayout({
     <div className="flex h-full items-center justify-center">
       <div className="text-white">
         <h2 className="mb-4 text-4xl font-semibold">Chat with a Legendary Trainer</h2>
-        <h4 className="mb-6 text-xl font-semibold">Get inspired and receive advice from the strict David Goggins and wise Bruce Lee"</h4>
+        <h4 className="mb-6 text-xl font-semibold">Get inspired and receive advice from the strict David Goggins and wise Bruce Lee</h4>
       </div>
     </div>
   </div>
