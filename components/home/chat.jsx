@@ -246,7 +246,7 @@ export default function Chat({ character }) {
         onScroll={handleScroll}
       >
         <div className='relative m-auto flex p-4 text-base md:max-w-2xl gap-2 md:gap-6 md:py-6 lg:max-w-2xl lg:px-0 xl:max-w-3xl'>
-          <Link href={"/"} className='rounded border px-8 py-2 flex items-center'><img src="/arrow-back.svg" alt="back" className='w-4 h-4 mr-2' /> Back home</Link>
+          <Link href={"/"} className='rounded border px-8 py-2 flex items-center'><Img src="/arrow-back.svg" alt="back" className='w-4 h-4 mr-2' /> Back home</Link>
         </div>
         {/* Existing code for rendering chat messages */}
         {messages.map(({ content, role }, index) => (
