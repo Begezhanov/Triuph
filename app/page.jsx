@@ -11,17 +11,17 @@ export default async function Home() {
     session !== null ? (
       // <Chat character="David Goggins" />
       <div className="flex gap-4">
-        <Link href="/david" className={`hover:bg-neutral-200 flex flex-col p-4 gap-4 text-center text-3xl font-bold border rounded button davidButton bg-neutral-100`}>
+        <Link href="/david" className={`transitions-[grayscale] transitions-[background] ease-in-out duration-100 hover:bg-neutral-200 flex flex-col p-4 gap-4 text-center text-3xl font-bold border rounded button davidButton bg-neutral-100`}>
           <div className="w-full h-64 overflow-hidden rounded">
-            <Image src="/david6.jpeg" width={500} height={500} />
+            <Image src="/david.jpg" width={500} height={500} className="grayscale hover:grayscale-0" />
           </div>
           David Goggins
         </Link>
-        <Link href="/irina" className={`hover:bg-neutral-200  flex flex-col p-4 gap-4 text-center text-3xl font-bold border rounded button davidButton bg-neutral-100`}>
+        <Link href="/Bruce" className={`transitions-[grayscale] transitions-[background] ease-in-out duration-100  hover:bg-neutral-200  flex flex-col p-4 gap-4 text-center text-3xl font-bold border rounded button davidButton bg-neutral-100`}>
           <div className="w-full h-64 overflow-hidden rounded">
-            <Image src="/irina3.jpeg" width={500} height={500} />
+            <Image src="/bruce1.jpg" width={500} height={500} className="grayscale hover:grayscale-0" />
           </div>
-          Irina Khakamada
+          Bruce Lee
         </Link>
       </div>
 

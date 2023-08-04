@@ -8,7 +8,7 @@ export default async function Home() {
 
   return (
     session !== null ? (
-      <Chat character="Irina Khakamada" />
+      <Chat character="Bruce Lee" />
     ) : (
       <Landing />
     )
