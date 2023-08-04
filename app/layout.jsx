@@ -49,9 +49,9 @@ export default async function RootLayout({
             style="background-image: url('/wall3.jpeg'); height: 400px"></div>`} */}
         {/* /> */}
 
-        <div
+        {/* <div
   className="relative overflow-hidden rounded-lg bg-cover bg-no-repeat p-12 text-center"
-  style={{ backgroundImage: `url('/sky.jpeg')`, height: '400px' }}>
+  style={{ backgroundImage: `url('/road.jpeg')`, height: '400px' }}> */}
   <div
     className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
     style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
@@ -62,7 +62,7 @@ export default async function RootLayout({
       </div>
     </div>
   </div>
-</div>
+{/* </div> */}
 
         {/* <body className={cx(sfPro.variable, inter.variable, )}>
                 <div className="fixed h-screen w-full bg-gradient-to-br from-white to-stone-900"/>
