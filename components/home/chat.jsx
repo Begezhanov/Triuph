@@ -197,6 +197,7 @@ const useMessages = (character) => {
 
 
 
+
 export default function Chat({ character }) {
   const [input, setInput] = useState('')
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true);
@@ -219,6 +220,7 @@ export default function Chat({ character }) {
   };
 
 
+
   const scrollDown = useCallback(() => {
     if (autoScrollEnabled) {
       messagesEndRef.current?.scrollIntoView(true)
@@ -239,7 +241,6 @@ export default function Chat({ character }) {
 
   return (
     <div className="flex-1 w-full border-white-100 bg-white overflow-hidden flex flex-col">
-
       <div
         ref={chatContainerRef}
         className="flex-1 w-full relative max-h-[calc(100vh-4rem)] overflow-x-hidden "

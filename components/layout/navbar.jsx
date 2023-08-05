@@ -14,7 +14,7 @@ export default function NavBar({ session }) {
     <>
       <SignInModal />
       <div
-        className={`fixed top-0 w-full ${scrolled
+        className={`fixed top-0 w-full  ${scrolled
           ? "border-b border-gray-200 bg-neutral-900/50 backdrop-blur-xl"
           : "bg-neutral-900"
           } z-30 transition-all`}
@@ -23,7 +23,7 @@ export default function NavBar({ session }) {
           <Link href="/" className="flex items-center font-display text-2xl">
             <Image
               src="/triumph.svg"
-              alt="N17R logo"
+              alt="triumph logo"
               width="30"
               height="30"
               className="mr-2 rounded-sm"
